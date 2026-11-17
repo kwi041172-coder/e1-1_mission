@@ -78,7 +78,7 @@ rm done.txt
 
 출력 결과
 
----
+```bash
 localhost:~# pwd
 /root
 localhost:~# touch test.txt
@@ -122,7 +122,7 @@ ls -l
 
 **변경 전**
 
----
+```bash
 root@903269743ec4:/# touch test.txt
 root@903269743ec4:/# mkdir test_dir
 root@903269743ec4:/# ls -l
@@ -151,6 +151,10 @@ docker ps
 docker ps -a
 docker run -it --name test ubuntu bash
 ```
+
+Ubuntu 컨테이너 실행 화면:
+
+![Ubuntu 컨테이너 실행 화면](./images/docker-container-run.png.png)
 
 이미지는 컨테이너를 만들 때 사용하는 읽기 전용 템플릿으로, `docker build`가 이미지에 애플리케이션과 설정을 담습니다. `docker run`은 이미지로 격리된 컨테이너를 만들고 실행하며, 실행 중 컨테이너에서 변경한 내용은 보통 해당 컨테이너의 쓰기 계층에만 남습니다. 이미지 자체나 다른 컨테이너에 변경이 자동으로 반영되지는 않습니다.
 
@@ -219,9 +223,33 @@ ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U
 - `docker attach test`는 컨테이너의 주 프로세스에 연결합니다. 주 프로세스를 종료하면 컨테이너도 종료될 수 있습니다.
 - `docker exec -it test bash`는 실행 중인 컨테이너 안에서 별도의 셸을 시작합니다. 해당 셸을 종료해도 컨테이너의 주 프로세스는 계속 실행됩니다.
 
-Ubuntu 컨테이너 실행 화면:
+출력 결과
 
-![Ubuntu 컨테이너 실행 화면](./images/docker-container-run.png.png)
+```powershell
+PS C:\Windows\System32> docker start test
+test
+PS C:\Windows\System32> docker exec -it test bash
+root@c70deedec79d:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@c70deedec79d:/# exit
+exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug test
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Windows\System32> docker ps
+CONTAINER ID   IMAGE      COMMAND                   CREATED             STATUS              PORTS                                     NAMES
+903269743ec4   ubuntu     "/bin/bash"               About an hour ago   Up About an hour                                              myeginx
+04a90ec0730a   my-nginx   "/docker-entrypoint.…"   27 hours ago        Up 2 minutes        0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx
+c70deedec79d   ubuntu     "bash"                    6 days ago          Up About a minute                                             test
+PS C:\Windows\System32> docker attach test
+root@c70deedec79d:/# exit
+exit
+PS C:\Windows\System32> docker ps
+CONTAINER ID   IMAGE      COMMAND                   CREATED             STATUS             PORTS                                     NAMES
+903269743ec4   ubuntu     "/bin/bash"               About an hour ago   Up About an hour                                             myeginx
+04a90ec0730a   my-nginx   "/docker-entrypoint.…"   27 hours ago        Up 3 minutes       0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx
+---
 
 ### 3. 커스텀 NGINX 이미지
 
@@ -238,14 +266,14 @@ COPY index.html /usr/share/nginx/html/index.html
 docker build -t my-nginx .
 docker run -d -p 8080:80 --name my-nginx my-nginx
 docker ps
-curl.exe -i http://localhost:8080/
 ```
-
-브라우저에서 [http://localhost:8080](http://localhost:8080)에 접속해 커스텀 페이지가 표시되는 것을 확인했습니다.
 
 빌드 결과:
 
 ![Docker 이미지 빌드 결과](./images/docker-build-result.png.png)
+
+
+브라우저에서 [http://localhost:8080](http://localhost:8080)에 접속해 커스텀 페이지가 표시되는 것을 확인했습니다.
 
 웹 페이지 실행 결과:
 
