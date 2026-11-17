@@ -15,10 +15,10 @@
 ---
 
 ## 2. 실행 환경
-- oS: Windows 11 
-- 터미널: [예: Git Bash / Windows Terminal / WSL Ubuntu / PowerShell]
-- Docker: Docker Desktop x.x.x 
-- Git: git version x.x.x
+- OS: Windows 11 
+- 터미널: [Git Bash / Windows Terminal / WSL Ubuntu / PowerShell / vscode]
+- Docker: Docker Desktop 29.9.2
+- Git: git version 2.55.0
 
 ## 3. 수행 체크리스트
 
@@ -382,7 +382,6 @@ CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK
 ### 8-2. ubuntu 컨테이너 실행 및 내부 진입
 
 ---
-[Docker 컨테이너 실행 화면](./images/docker-container-run.png)
 ![Docker 컨테이너 실행 화면](./images/docker-container-run.png)
 ---
 
@@ -444,13 +443,11 @@ c70deedec79d   ubuntu    "bash"    About an hour ago   Up 2 minutes             
 이번 실습에서는 웹 서버 베이스 이미지인 **NGINX**를 선택했다.
 
 ---
-
 - 베이스 이미지: `nginx:latest`
 - 선택 이유:
   - 웹 서버 기능이 기본으로 포함되어 있어 실행이 쉽다.
   - 정적 HTML 파일만 교체하면 커스터마이징이 가능하다.
   - 빌드와 실행 결과를 눈으로 바로 확인할 수 있어 실습에 적합하다.
-
 ---
 
 ### 9-3. 내가 적용한 커스텀 포인트
@@ -559,7 +556,6 @@ http://localhost:8080
 확인 결과:
 
 ---
-[nginx 실행 화면](./images/nginx_container_result.png)
 ![nginx 실행 화면](./images/nginx_container_result.png)
 ---
 
@@ -578,15 +574,13 @@ docker run -d -p 8082:80 --name my-nginx-live -v ${PWD}:/usr/share/nginx/html ng
 실행 전
 
 ---
-[바인드마운트 실행 전 화면](./images/bind-before.png)
-![nginx 실행 화면](./images/nginx_bind-before.png)
+![바인드마운트 실행 전 화면](./images/bind-before.png)
 ---
 
 실행 후
 
 ---
-[nginx 실행 화면](./images/bind-after.png)
-![nginx 실행 화면](./images/bind-after.png)
+![바인드마운트 실행 후 화면](./images/bind-after.png)
 ---
 
 ### 11-2. Docker 볼륨
@@ -801,4 +795,3 @@ PowerShell에서 Ubuntu 이미지를 내려받으려고 `docker pull ubuntu`를 
 2. Docker Desktop이 완전히 시작될 때까지 기다린다.
 3. PowerShell을 열어 `docker info`를 실행하고 서버 정보가 나오는지 확인한다.
 4. 다시 이미지 다운를 실행한다.
- 
