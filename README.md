@@ -695,11 +695,66 @@ GitHub에서 저장소 준비
 https://github.com/kwi******-co***/e1-1_mission.git
 ---
 
-GitHub에서 연동
+GitHub에 연동
 
 ---
-[git list 실행 화면](./images/git-list.png)
-![git list 실행 화면](./images/git-list.png)
+PS C:\Users\kwi04\OneDrive\Desktop\e1-1_mission> git remote add origin https://github.com/kwi******-co***/e1-1_mission.git             
+PS C:\Users\kwi04\OneDrive\Desktop\e1-1_mission> git remote -v                                                       
+origin  https://github.com/kwi******-co***/e1-1_mission.git (fetch)
+origin  https://github.com/kwi******-co***/e1-1_mission.git (push)
+PS C:\Users\kwi04\OneDrive\Desktop\e1-1_mission> git commit -m "Add project files"
+On branch main
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Dockerfile
+        README.md
+        images/
+        index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\kwi04\OneDrive\Desktop\e1-1_mission> git add .                        
+PS C:\Users\kwi04\OneDrive\Desktop\e1-1_mission> git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   Dockerfile
+        new file:   README.md
+        new file:   images/bind-after.png
+        new file:   images/bind-before.png
+        new file:   images/docker-build-result.png.png
+        new file:   images/docker-container-run.png.png
+        new file:   images/git-list.png
+        new file:   images/nginx_container_result.png
+        new file:   index.html
+
+PS C:\Users\kwi04\OneDrive\Desktop\e1-1_mission> git commit -m "Add project files"
+[main (root-commit) fb8aa73] Add project files
+ 9 files changed, 762 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 README.md
+ create mode 100644 images/bind-after.png
+ create mode 100644 images/bind-before.png
+ create mode 100644 images/docker-build-result.png.png
+ create mode 100644 images/docker-container-run.png.png
+ create mode 100644 images/git-list.png
+ create mode 100644 images/nginx_container_result.png
+ create mode 100644 index.html
+PS C:\Users\kwi04\OneDrive\Desktop\e1-1_mission> git push -u origin main
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 268.09 KiB | 8.94 MiB/s, done.
+Total 12 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/kwi******-co***/e1-1_mission.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
 ---
 
 ## 13. 트러블슈팅
